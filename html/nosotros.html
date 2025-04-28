@@ -96,7 +96,7 @@
 
   
   <!-- SECCION MISION, VISION, VALORES -->
-  <section class="que-hacemos bg-black text-white py-5">
+  <section class="que-hacemos bg-black text-white py-5 scroll-hidden">
     <div class="container text-center">
       <h3 class="mb-5">Lo que <span class="text-danger">hacemos</span> ❓</h3>
       <div class="row">
@@ -120,7 +120,7 @@
   </section>
   
   <!-- SECCION EQUIPO -->
-  <section class="equipo py-5 text-white text-center">
+  <section class="equipo py-5 text-white text-center scroll-hidden">
     <div class="container">
       <p class="text-danger fw-bold">Nuestro Escuadrón</p>
       <h2 class="fw-bold">Mentes brillantes que <span class="text-danger">arman galaxias</span></h2>
@@ -186,6 +186,23 @@
           navbar.classList.remove("navbar-scrolled");
         }
       });
+    });
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const scrollElements = document.querySelectorAll('.scroll-hidden');
+
+      const scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('scroll-show');
+          }
+        });
+      }, {
+        threshold: 0.2 // porcentaje de visibilidad antes de activar
+      });
+
+      scrollElements.forEach(el => scrollObserver.observe(el));
     });
   </script>
   

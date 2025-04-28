@@ -131,7 +131,7 @@
 
   <!-- main y tarjetas -->
   
-  <section id="figuras" class="figuras-section">
+  <section id="figuras" class="figuras-section scroll-hidden">
     <div class="overlay"></div>
   
     <div class="container position-relative z-2 text-white py-5">
@@ -194,7 +194,7 @@
     </div>
   </section>
 
-  <section id="trailer" class="seccion-video py-5">
+  <section id="trailer" class="seccion-video py-5 scroll-hidden">
     <div class="container text-center">
       <h2 class="text-white fw-bold mb-4">
         Mira el <span class="sable-text">tráiler galáctico</span>
@@ -252,6 +252,25 @@
       });
     });
   </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const scrollElements = document.querySelectorAll('.scroll-hidden');
+
+      const scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('scroll-show');
+          }
+        });
+      }, {
+        threshold: 0.2 // porcentaje de visibilidad antes de activar
+      });
+
+      scrollElements.forEach(el => scrollObserver.observe(el));
+    });
+  </script>
+
   
 </body>
 </html>

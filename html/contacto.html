@@ -94,7 +94,7 @@
   </section>
 
     <!-- FORMULARIO DE REGISTRO -->
-    <section id="form" class="registro-section py-5 text-white">
+    <section id="form" class="registro-section py-5 text-white scroll-hidden">
         <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
@@ -192,6 +192,23 @@
           navbar.classList.remove("navbar-scrolled");
         }
       });
+    });
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const scrollElements = document.querySelectorAll('.scroll-hidden');
+
+      const scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('scroll-show');
+          }
+        });
+      }, {
+        threshold: 0.2 // porcentaje de visibilidad antes de activar
+      });
+
+      scrollElements.forEach(el => scrollObserver.observe(el));
     });
   </script>
   
