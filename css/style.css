@@ -364,3 +364,57 @@ body, html {
 .registro-form .form-check-label {
   font-size: 0.85rem;
 }
+
+/* ================== RESPONSIVE PARA MÓVIL ================== */
+@media (max-width: 768px) {
+
+  /* Ajuste general */
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  /* Navbar */
+  header .navbar {
+    padding: 15px 0;
+  }
+
+  /* Hero */
+  .hero h1, .slider-text h1 {
+    font-size: 2rem;
+  }
+
+  /* Tarjetas */
+  .card-title {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .card-body p {
+    text-align: center;
+  }
+
+  /* Video */
+  .seccion-video h2 {
+    font-size: 1.8rem;
+  }
+
+  /* Footer */
+  .footer h4 {
+    font-size: 1.5rem;
+  }
+
+  /* Equipo */
+  .equipo img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Formulario */
+  .registro-form {
+    padding: 20px;
+  }
+
+}
+
+
