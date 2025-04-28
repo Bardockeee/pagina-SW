@@ -10,6 +10,17 @@ body, html {
     background-attachment: fixed;    /* Se queda fija al hacer scroll */
     background-repeat: no-repeat;    /* No se repite */
   }
+
+  .scroll-hidden {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1.2s ease, transform 1.2s ease;
+  }
+  
+  .scroll-show {
+    opacity: 1;
+    transform: translateY(0);
+  }
   
   /* Color letra de sables */
   .sable-text-rojo{
@@ -417,15 +428,6 @@ body, html {
 
 }
 
-.scroll-hidden {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 1.2s ease, transform 1.2s ease;
-}
 
-.scroll-show {
-  opacity: 1;
-  transform: translateY(0);
-}
 
 

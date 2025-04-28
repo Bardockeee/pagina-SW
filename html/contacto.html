@@ -38,7 +38,7 @@
             </li>
           </ul>
 
-          <a href="#" class="btn btn-outline-light ms-3">
+          <a href="#" class="btn btn-outline-light ms-3" data-bs-toggle="modal" data-bs-target="#loginModal">
             <i class="bi bi-person"></i> Login
           </a>
         </div>
@@ -46,6 +46,36 @@
     </nav>
   </header>
 
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content" style="background-color: #000; color: white; font-family: 'Orbitron', sans-serif;">
+  
+        <div class="modal-header border-1" style="background-color: #700b0b;">
+          <h5 class="modal-title sable-text-rojo" id="loginModalLabel">Ingresar Usuario</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+  
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="loginUser" class="form-label text-danger">Usuario</label>
+              <input type="text" class="form-control" id="loginUser" placeholder="Nombre de usuario" required>
+            </div>
+            <div class="mb-3">
+              <label for="loginPassword" class="form-label text-danger">Contraseña</label>
+              <input type="password" class="form-control" id="loginPassword" placeholder="Contraseña" required>
+            </div>
+          </form>
+        </div>
+  
+        <div class="modal-footer border-0">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-danger">Ingresar</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
 
   <!-- SLIDER SECCIÓN-->  
   <section id="heroSlider" class="position-relative text-white">
@@ -92,6 +122,8 @@
       </div>
     </div>
   </section>
+
+  
 
     <!-- FORMULARIO DE REGISTRO -->
     <section id="form" class="registro-section py-5 text-white scroll-hidden">
@@ -202,6 +234,8 @@
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('scroll-show');
+          } else {
+            entry.target.classList.remove('scroll-show');
           }
         });
       }, {
