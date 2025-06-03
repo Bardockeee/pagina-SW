@@ -1,0 +1,111 @@
+/* =================== CARDS DESTACADAS =================== */
+@use 'variables';
+@use 'mixins';
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  padding: 0;
+  margin: 0;
+  transition: opacity 0.3s ease;
+}
+
+.producto-card {
+  height: 600px;
+  background-color: #111;
+  position: relative;
+
+  // Efecto hover: opacidad de imagen + mostrar tooltip
+  &:hover .card-img {
+    opacity: 0.6;
+  }
+
+  &:hover .tooltip-descripcion {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.tooltip-descripcion {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  max-width: 80%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 10;
+  pointer-events: none;
+}
+.producto-card:hover .tooltip-descripcion {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+.card-title {
+  font-family: 'Orbitron', sans-serif;
+  @include mixins.sable-rojo;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  animation: glow-border 1.5s infinite;
+}
+
+.card:hover img {
+  filter: brightness(1.05) contrast(1.1);
+}
+
+.card-body .text-muted {
+  color: variables.$color-blanco !important;
+  font-size: 0.9rem;
+}
+
+.figura-descripcion {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.5s ease, opacity 0.4s ease;
+  padding: 0 1rem;
+}
+
+.figura-card.expanded .figura-descripcion {
+  max-height: 300px; // ajusta según el contenido
+  opacity: 1;
+  padding: 1rem;
+}
+
+
+
+.btn-outline-danger {
+  border-radius: 30px;
+  font-weight: bold;
+  transition: 0.3s ease;
+
+  &:hover {
+    background-color: variables.$color-rojo;
+    color: white;
+  }
+}
+
+@keyframes glow-border {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+  }
+}

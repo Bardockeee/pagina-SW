@@ -1,0 +1,75 @@
+/* =================== HERO + SLIDER =================== */
+
+@use 'variables';
+@use 'mixins';
+
+#heroSlider {
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+#heroSlider .carousel-item img {
+  height: 100vh;
+  object-fit: cover;
+  filter: brightness(0.3);
+}
+
+.slider-text {
+  z-index: 2;
+  color: variables.$color-blanco;
+  text-shadow: 1px 1px 4px variables.$color-negro;
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  transform: translate(-30%, -50%);
+  text-align: left;
+
+  .col-md-7 {
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-family: 'Orbitron', sans-serif;
+    line-height: 1.4;
+    font-size: 2.8rem;
+
+    &.sable-text-azul {
+      @include mixins.sable-azul;
+    }
+
+    span.sable-text-rojo {
+      @include mixins.sable-rojo;
+    }
+  }
+
+ 
+
+  .btn {
+    @include mixins.boton-redondo(transparent, variables.$color-blanco);
+    border: 1px solid variables.$color-blanco;
+    margin-top: 20px;
+  }
+  .btn-outline-light {
+  border-radius: variables.$radio-btn;
+  font-weight: 500;
+  padding: 8px 20px;
+  @include mixins.transicion-suave;
+}
+
+.btn-outline-light:hover {
+  background-color: rgb(255, 40, 40);
+  color: variables.$color-blanco;
+  border-color: variables.$color-blanco;
+}
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+}
+
+.carousel-indicators [data-bs-target] {
+  background-color: variables.$color-rojo;
+}

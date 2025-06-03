@@ -1,0 +1,75 @@
+/* =================== NAVBAR =================== */
+
+@use 'variables';
+@use 'mixins';
+
+header .navbar {
+  background-color: transparent !important;
+  padding: 30px 0;
+  z-index: variables.$z-navbar;
+}
+
+header .navbar.navbar-scrolled {
+  background-color: variables.$color-negro !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  @include mixins.transicion-suave(background-color, 0.3s);
+}
+
+header .navbar .navbar-brand span:first-child {
+  color: variables.$color-blanco;
+}
+
+header .navbar .navbar-brand span:last-child {
+  color: variables.$color-blanco;
+  @include mixins.sable-rojo;
+}
+
+header .navbar .nav-link {
+  font-weight: 500;
+  margin-right: 15px;
+  color: variables.$color-blanco !important;
+  @include mixins.transicion-suave(color, 0.2s);
+}
+
+header .navbar .nav-link:hover {
+  color: variables.$color-rojo !important;
+}
+
+header .navbar .nav-link.active {
+  color: variables.$color-rojo !important;
+  @include mixins.sable-rojo;
+  font-weight: bold;
+  @include mixins.transicion-suave(all, 0.3s);
+}
+
+.dropdown-menu {
+  background-color: #1a1a1a;
+  border: none;
+}
+
+.dropdown-menu .dropdown-item {
+  color: variables.$color-blanco;
+  @include mixins.transicion-suave;
+}
+
+.dropdown-menu .dropdown-item:hover {
+  background-color: variables.$color-rojo;
+  color: variables.$color-blanco;
+}
+
+.btn-outline-light {
+  border-radius: variables.$radio-btn;
+  font-weight: 500;
+  padding: 8px 20px;
+  @include mixins.transicion-suave;
+}
+
+.btn-outline-light:hover {
+  background-color: rgb(255, 40, 40);
+  color: variables.$color-blanco;
+  border-color: variables.$color-blanco;
+}
+
+.modal-header {
+  @include mixins.sable-rojo;
+}
