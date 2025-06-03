@@ -1,38 +1,77 @@
-// Código para cargar personajes de Star Wars desde SWAPI y mostrarlos dinámicamente
+
 window.onload = async function () {
+  let personajes = [];
+  let paginaActual = 0;
+  const porPagina = 6;
+  const maxPersonajes = 12;
+
   try {
     const res = await fetch("https://akabab.github.io/starwars-api/api/all.json");
-    const data = await res.json();
+    personajes = await res.json();
 
     const contenedor = document.getElementById("personajes-dinamicos");
-    contenedor.innerHTML = "";
+    const boton = document.getElementById("btnVerMas");
 
-    // Mostrar solo los primeros 6 personajes
-    data.slice(0, 6).forEach(personaje => {
-      const col = document.createElement("div");
-      col.className = "col-md-4";
+    function renderizarPagina() {
+      const inicio = paginaActual * porPagina;
+      const fin = inicio + porPagina;
+      const personajesPagina = personajes.slice(inicio, fin);
 
-      col.innerHTML = `
-        <div class="card bg-dark text-white border border-danger rounded-4 h-100 shadow">
-          <img src="${personaje.image}" class="card-img-top" alt="${personaje.name}">
-          <div class="card-body">
-            <h5 class="card-title text-warning">${personaje.name}</h5>
-            <p class="card-text">
-              🧬 Especie: ${personaje.species || "N/A"}<br>
-              ⚔️ Afiliación: ${personaje.affiliations?.[0] || "Desconocida"}<br>
-              📏 Altura: ${personaje.height} cm<br>
-              ⚖️ Peso: ${personaje.mass} kg
-            </p>
+      personajesPagina.forEach(personaje => {
+        const col = document.createElement("div");
+        col.className = "col-md-4";
+
+        col.innerHTML = `
+          <div class="card figura-card bg-black text-white border-0">
+            <img src="${personaje.image}" class="card-img-top" alt="${personaje.name}">
+            <div class="card-body">
+              <h5 class="card-title text-warning">${personaje.name}</h5>
+              <p class="card-text">
+                🧬 Especie: ${personaje.species || "N/A"}<br>
+                ⚔️ Afiliación: ${personaje.affiliations?.[0] || "Desconocida"}<br>
+                📏 Altura: ${personaje.height} cm<br>
+                ⚖️ Peso: ${personaje.mass} kg
+              </p>
+            </div>
           </div>
-        </div>
-      `;
+        `;
 
-      contenedor.appendChild(col);
+        contenedor.appendChild(col);
+      });
+
+      paginaActual++;
+
+      // Si ya mostramos 12, cambia el botón
+      if (paginaActual * porPagina >= maxPersonajes) {
+        boton.textContent = "Mostrar menos ↑";
+      }
+    }
+
+    function reiniciarVista() {
+      contenedor.innerHTML = "";
+      paginaActual = 0;
+      renderizarPagina();
+      boton.textContent = "Ver más personajes ↓";
+    }
+
+    // Evento botón
+    boton.addEventListener("click", () => {
+      if (boton.textContent.includes("menos")) {
+        reiniciarVista();
+      } else {
+        renderizarPagina();
+      }
     });
+
+    // Mostrar primeros 6 al cargar
+    renderizarPagina();
+
   } catch (error) {
     console.error("Error al obtener personajes:", error);
-    const contenedor = document.getElementById("personajes-dinamicos");
-    contenedor.innerHTML = `<div class="alert alert-danger text-center">No se pudo cargar la información desde el lado luminoso 😢</div>`;
+    document.getElementById("personajes-dinamicos").innerHTML =
+      `<div class="alert alert-danger text-center">No se pudo cargar la información desde la galaxia 😢</div>`;
   }
 };
+
+
 
