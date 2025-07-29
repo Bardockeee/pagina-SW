@@ -54,6 +54,20 @@ window.onload = async function () {
       boton.textContent = "Ver más personajes ↓";
     }
 
+    function reiniciarVista() {
+      contenedor.innerHTML = "";
+      paginaActual = 0;
+      renderizarPagina();
+      boton.textContent = "Ver más personajes ↓";
+
+      // Hacer scroll automático hacia la sección de personajes
+      const seccionPersonajes = document.getElementById("personajes");
+      if (seccionPersonajes) {
+        seccionPersonajes.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+
+
     // Evento botón
     boton.addEventListener("click", () => {
       if (boton.textContent.includes("menos")) {

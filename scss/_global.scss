@@ -6,7 +6,7 @@ body, html {
   padding: 0;
   font-family: 'Orbitron', sans-serif;
   scroll-behavior: smooth;
-  @include mixins.fondo-galactico('/img/milky-way-full-stars-space.jpg');
+  background-color: rgb(0, 0, 0);
 }
 
 /* ANIMACIÓN DE ENTRADA AL HACER SCROLL */

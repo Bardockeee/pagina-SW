@@ -13373,11 +13373,7 @@ body, html {
   padding: 0;
   font-family: "Orbitron", sans-serif;
   scroll-behavior: smooth;
-  background-image: url("/img/milky-way-full-stars-space.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-color: rgb(0, 0, 0);
 }
 
 /* ANIMACIÓN DE ENTRADA AL HACER SCROLL */
@@ -13732,7 +13728,6 @@ header .navbar .nav-link.active {
 }
 
 .seccion-video h2, .seccion-video .h2 {
-  font-family: "Orbitron", sans-serif;
   text-shadow: 0 0 10px rgba(255, 0, 0, 0.8), 0 0 20px rgba(255, 0, 0, 0.6), 0 0 30px rgba(255, 0, 0, 0.4);
 }
 
